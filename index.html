@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فهرس امتحانات مسابقة الترقية - تكنولوجيا الإعلام والاتصال</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-color: #15803d; --dark-blue: #0f172a; --bg-gray: #f8fafc; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background: var(--bg-gray); color: #334155; padding: 20px; }
+        .header-main { text-align: center; margin: 30px auto; max-width: 1000px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border-top: 6px solid var(--primary-color); }
+        .header-main h1 { font-size: 1.8rem; color: var(--dark-blue); font-weight: 900; margin-bottom: 10px; }
+        .header-main p { color: #64748b; font-size: 1.1rem; }
+        .grid-container { max-width: 1000px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .subject-card { background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.2s ease-in-out; display: flex; flex-direction: column; justify-content: space-between; }
+        .subject-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-color: var(--primary-color); }
+        .subject-title { font-size: 1.2rem; font-weight: 700; color: var(--dark-blue); margin-bottom: 8px; }
+        .subject-desc { font-size: 0.95rem; color: #64748b; margin-bottom: 15px; line-height: 1.5; }
+        .btn-link { display: inline-block; text-align: center; background: var(--dark-blue); color: white; text-decoration: none; padding: 10px; border-radius: 4px; font-weight: 600; transition: background 0.2s; }
+        .btn-link:hover { background: var(--primary-color); }
+    </style>
+</head>
+<body>
+
+    <div class="header-main">
+        <h1>مسابقة صعود ورتب الترقية لقطاع التربية الوطنية</h1>
+        <p>المنصة الرقمية الرسمية لاجتياز المواضيع المقترحة في مقياس: تكنولوجيا الإعلام والاتصال</p>
+    </div>
+
+    <div class="grid-container">
+        <!-- الموضوع 1 -->
+        <div class="subject-card">
+            <div>
+                <div class="subject-title">الموضوع المقترح رقم 01</div>
+                <p class="subject-desc">محاور الاختبار: تهيئة القرص الصلب والمكونات، التنسيقات المتقدمة وجداول المعالج، الدوال الحسابية الأساسية، وبروتوكولات البريد والاتصال.</p>
+            </div>
+            <a href="subject1.html" class="btn-link">ولوج موضوع الامتحان</a>
+        </div>
+        <!-- الموضوع 2 -->
+        <div class="subject-card">
+            <div>
+                <div class="subject-title">الموضوع المقترح رقم 02</div>
+                <p class="subject-desc">محاور الاختبار: نظم التشغيل والبرمجيات، دمج المراسلات الإدارية، دوال الإحصاء والشرط البسيط، وهندسة الشبكات السلكية واللاسلكية.</p>
+            </div>
+            <a href="subject2.html" class="btn-link">ولوج موضوع الامتحان</a>
+        </div>
+        <!-- الموضوع 3 -->
+        <div class="subject-card">
+            <div>
+                <div class="subject-title">الموضوع المقترح رقم 03</div>
+                <p class="subject-desc">محاور الاختبار: الذاكرة والتخزين المؤقت، حماية المستندات المكتوبة، دالة الشرط المركب والتقديرات، وأمن المعلومات وجدران الحماية السيبرانية.</p>
+            </div>
+            <a href="subject3.html" class="btn-link">ولوج موضوع الامتحان</a>
+        </div>
+    </div>
+
+</body>
+</html>
