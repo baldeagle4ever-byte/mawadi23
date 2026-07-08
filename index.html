@@ -5,45 +5,259 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فهرس امتحانات مسابقة الترقية - تكنولوجيا الإعلام والاتصال</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary-color: #15803d; --dark-blue: #0f172a; --bg-gray: #f8fafc; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-        body { background: var(--bg-gray); color: #334155; padding: 20px; }
-        .header-main { text-align: center; margin: 30px auto; max-width: 1000px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border-top: 6px solid var(--primary-color); }
-        .header-main h1 { font-size: 1.8rem; color: var(--dark-blue); font-weight: 900; margin-bottom: 10px; }
-        .header-main p { color: #64748b; font-size: 1.1rem; }
-        .grid-container { max-width: 1000px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .subject-card { background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.2s ease-in-out; display: flex; flex-direction: column; justify-content: space-between; }
-        .subject-card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-color: var(--primary-color); }
-        .subject-title { font-size: 1.2rem; font-weight: 700; color: var(--dark-blue); margin-bottom: 8px; }
-        .subject-desc { font-size: 0.95rem; color: #64748b; margin-bottom: 15px; line-height: 1.5; }
-        .btn-link { display: inline-block; text-align: center; background: var(--dark-blue); color: white; text-decoration: none; padding: 10px; border-radius: 4px; font-weight: 600; transition: background 0.2s ease-in-out; }
-        .btn-link:hover { background: var(--primary-color); }
+        :root {
+            --primary-color: #15803d;
+            --primary-dark: #166534;
+            --accent-color: #0f766e;
+            --dark-blue: #0f172a;
+            --bg-gray: #f0f4f8;
+            --light-gray: #e8eef7;
+            --text-dark: #1a202c;
+            --text-light: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gray) 0%, #e0f2fe 100%);
+            color: var(--text-dark);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header-main {
+            text-align: center;
+            margin: 40px auto 50px;
+            max-width: 1000px;
+            background: white;
+            padding: 50px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-top: 8px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-main::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(21, 128, 61, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-main h1 {
+            font-size: 2.2rem;
+            color: var(--dark-blue);
+            font-weight: 900;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-main p {
+            color: var(--text-light);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .grid-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid #f0f4f8;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .subject-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .subject-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 12px;
+        }
+
+        .subject-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(21, 128, 61, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(21, 128, 61, 0.4);
+            left: 100%;
+        }
+
+        .btn-link:hover::before {
+            left: 0;
+        }
+
+        .btn-link i {
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-main h1 {
+                font-size: 1.8rem;
+            }
+
+            .header-main p {
+                font-size: 1rem;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .subject-card {
+                padding: 25px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="header-main">
-        <h1>مسابقة صعود ورتب الترقية لقطاع التربية الوطنية</h1>
-        <p>المنصة الرقمية الرسمية لاجتياز المواضيع المقترحة في مقياس: تكنولوجيا الإعلام والاتصال</p>
+        <h1>🎓 مسابقة الترقية</h1>
+        <h1>قطاع التربية الوطنية</h1>
+        <p>المنصة الرقمية الرسمية لاجتياز مواضيع الامتحان المهني في مقياس: تكنولوجيا الإعلام والاتصال</p>
     </div>
 
     <div class="grid-container">
         <!-- الموضوع 1 -->
         <div class="subject-card">
             <div>
-                <div class="subject-title">الموضوع المقترح رقم 01</div>
-                <p class="subject-desc">محاور الاختبار: تهيئة القرص الصلب والمكونات، التنسيقات المتقدمة وجداول المعالج، الدوال والشبكات</p>
+                <div class="subject-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="subject-title">الموضوع الأول</div>
+                <p class="subject-desc">
+                    <strong>المحاور:</strong><br>
+                    ✓ المكونات المادية وأنظمة التخزين<br>
+                    ✓ معالج النصوص Word<br>
+                    ✓ جداول المعالج والدوال الحسابية<br>
+                    ✓ الشبكات والاتصالات الرقمية
+                </p>
             </div>
-            <a href="subject1.html" class="btn-link">ولوج موضوع الامتحان</a>
+            <a href="subject1.html" class="btn-link">
+                <i class="fas fa-arrow-left"></i>
+                ابدأ الامتحان
+            </a>
         </div>
+
         <!-- الموضوع 2 -->
         <div class="subject-card">
             <div>
-                <div class="subject-title">الموضوع المقترح رقم 02</div>
-                <p class="subject-desc">محاور الاختبار: نظم التشغيل والبرمجيات، دمج المراسلات الإدارية، دوال الإحصاء والطوبولوجيا</p>
+                <div class="subject-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="subject-title">الموضوع الثاني</div>
+                <p class="subject-desc">
+                    <strong>المحاور:</strong><br>
+                    ✓ نظم التشغيل والبرمجيات<br>
+                    ✓ دمج المراسلات الإدارية<br>
+                    ✓ دوال الإحصاء والعد<br>
+                    ✓ طوبولوجيا الشبكات المحلية
+                </p>
             </div>
-            <a href="subject2.html" class="btn-link">ولوج موضوع الامتحان</a>
+            <a href="subject2.html" class="btn-link">
+                <i class="fas fa-arrow-left"></i>
+                ابدأ الامتحان
+            </a>
         </div>
     </div>
 
